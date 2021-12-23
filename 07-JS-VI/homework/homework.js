@@ -52,11 +52,11 @@ function filter(array) {
   //Devolver un nuevo array con los elementos que cumplen la condición
   //Tu código:
   var nuevo = [];
-  for(let i = 0; i < array.length; i++) {
-    if(array[i].charAt(0) === 'a') {
-      nuevo.push(array[i]);
+  array.forEach(function(elemento) {
+    if(elemento.charAt(0) === 'a') {
+      nuevo.push(elemento);
     }
-  }
+  });
   return nuevo;
 }
 
