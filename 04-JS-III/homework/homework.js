@@ -103,7 +103,8 @@ function promedioResultadosTest(resultadosTest) {
   for(let i = 0; i < resultadosTest.length; i++) {
     suma += resultadosTest[i];
   }
-  return suma / resultadosTest.length;
+  promedio = suma / resultadosTest.length;
+  return Math.floor(promedio);
 }
 
 
@@ -125,17 +126,19 @@ function numeroMasGrande(numeros) {
 
 function multiplicarArgumentos() {
   // Usa la palabra clave `arguments` para multiplicar todos los argumentos y devolver el producto
-  // Si no se pasan argumentos devuelve 0. Si se pasa un argumento, simplemente devuélvelo
+  // Si no se pasan argumentos devuelve 0. Si se pasa un argumento, simplemente devuélvelo
   // Escribe tu código aquí:
-  var producto = 0;
-  if(arguments.length) {
+  var producto = 1;
+  if(arguments.length > 0) {
     if(arguments.length > 1) {
       for(let i = 0; i < arguments.length; i++) {
         producto *= arguments[i];
       }
     }else {
-      return arguments;
+      return arguments[0];
     }
+  }else {
+    return 0;
   }
   return producto;
 }
@@ -194,18 +197,24 @@ function mesesDelAño(array) {
   //Si alguno de los meses no está, devolver: "No se encontraron los meses pedidos"
   // Tu código:
   var meses = [];
+  var enero = false;
+  var marzo = false;
+  var noviembre = false;
   for(let i = 0; i < array.length; i++) {
-    if(array[i] === "Enero" && meses[0] === undefined) {
-      meses[0] = array[i];
+    if(array[i] === "Enero") {
+      enero = true;
+      meses.push(array[i]);
     }
-    if(array[i] === "Marzo" && meses[1] === undefined) {
-      meses[1] = array[i];
+    if(array[i] === "Marzo") {
+      marzo = true;
+      meses.push(array[i]);
     }
-    if(array[i] === "Noviembre" && meses[2] === undefined) {
-      meses[2] = array[i];
+    if(array[i] === "Noviembre") {
+      noviembre = true;
+      meses.push(array[i]);
     }
   }
-  if(meses[0] && meses[1] && meses[2]) {
+  if(enero && marzo && noviembre) {
     return meses;
   }else {
     return "No se encontraron los meses pedidos";
@@ -217,7 +226,13 @@ function mayorACien(array) {
   //La función recibe un array con enteros entre 0 y 200. Recorrer el array y guardar en un nuevo array sólo los
   //valores mayores a 100 (no incluye el 100). Finalmente devolver el nuevo array.
   // Tu código:
-  
+  var nuevoArray = [];
+  for(let i = 0; i < array.length; i++) {
+    if(array[i] > 100) {
+      nuevoArray.push(array[i]);
+    }
+  }
+  return nuevoArray;
 }
 
 
@@ -229,6 +244,21 @@ function breakStatement(numero) {
   //devolver: "Se interrumpió la ejecución"
   //Pista: usá el statement 'break'
   // Tu código:
+  var array = [];
+  var estado = 0;
+  for(let i = 0; i < 10; i++) {
+    numero += 2;
+    array.push(numero);
+    if(numero === i) {
+      estado = 1;
+      break;
+    }
+  }
+  if(estado === 1) {
+    return "Se interrumpió la ejecución";
+  } else {
+    return array;
+  }
 }
 
 
@@ -239,6 +269,16 @@ function continueStatement(numero) {
   //Cuando el número de iteraciones alcance el valor 5, no se suma en ese caso y se continua con la siguiente iteración
   //Pista: usá el statement 'continue'
   // Tu código:
+  var array = [];
+  for(let i = 0; i < 10; i++) {
+    if(i+1 === 5) {
+      continue;
+    }else {
+      numero += 2;
+      array.push(numero);
+    }
+  }
+  return array;
 }
 
 
